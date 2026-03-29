@@ -1,0 +1,8 @@
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/ch02`
+error: the following required arguments were not provided:
+  <TEXT>...
+
+Usage: ch02 <TEXT>...
+
+For more information, try '--help'.
