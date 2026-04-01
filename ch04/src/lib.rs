@@ -70,10 +70,17 @@ pub fn get_args() -> MyResult<Config> {
 }
 
 pub fn run(config: Config) -> MyResult<()> {
-    for filename in config.files {
-        match open(&filename) {
+    for (file_num, filename) in config.files.iter().enumerate() {
+        match open(filename) {
             Err(err) => eprintln!("{}: {}", filename, err),
             Ok(mut file) => {
+                if file_num > 0 {
+                    println!(
+                        "{}==> {} <==",
+                        if file_num > 0 { "\n" } else { "" },
+                        filename
+                    )
+                }
                 if let Some(size) = config.bytes {
                     read_file_bytes(&mut file, size)?;
                 } else {
